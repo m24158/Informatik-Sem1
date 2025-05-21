@@ -7,23 +7,24 @@ leiterspiel_dict = { 0: 0,
 
 Feld = 0
 AnzahlWurf = 0
-while Feld != 100: 
+
+while Feld < 100: 
     Wurf = random.randint(1,6)
     print("Würfelzahl:" , Wurf)
     Feld = Feld + Wurf
     print("Aktuelles Feld:", Feld)
     AnzahlWurf = AnzahlWurf + 1
 
-    Aktion = leiterspiel_dict[Feld]
+    Aktion = leiterspiel_dict.get(Feld, 0)
     if Aktion > 0: 
         Feld = Feld + Aktion 
         print("Sie waren auf einer Leiter, neues Feld:", Feld)
     elif Aktion < 0: 
         Feld = Feld + Aktion
-        print("Sie waren auf einer Rutsche:", Feld)
+        print("Sie waren auf einer Rutsche, neues Feld:", Feld)
     
 print("Anzahl der Würfe:", AnzahlWurf)    
 
-if Feld == 100 : 
+if Feld > 100 : 
     print("Spiel beendet")
 
